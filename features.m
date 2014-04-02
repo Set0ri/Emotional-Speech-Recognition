@@ -1,4 +1,4 @@
-function net = features(folder,bl,win)
+function [labels,values,u] = features(folder,bl,win)
   label_set = {'a','d','f','h','n','sa','su'};
   labels = [];
   values = [];
@@ -15,7 +15,8 @@ function net = features(folder,bl,win)
           sample = [f(:,1:max_len); p(:,1:max_len); m(:,1:max_len)];
           sample = sample(:,isfinite(sample(1,:)));
           values = [values; sample'];
-          new_labels = zeros(size(sample'));
+          
+          new_labels = zeros(size(sample,2),7);
           new_labels(:,l) = 1;
           
           labels = [labels;  new_labels];
@@ -26,8 +27,5 @@ function net = features(folder,bl,win)
   end
   
   [center,u,o] = fcm(values,10);
-  
-  net = newrbe(u,labels');
-  
 
 end

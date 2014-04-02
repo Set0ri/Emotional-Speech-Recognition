@@ -15,7 +15,11 @@ function net = features(folder,bl,win)
           sample = [f(:,1:max_len); p(:,1:max_len); m(:,1:max_len)];
           sample = sample(:,isfinite(sample(1,:)));
           values = [values; sample'];
-          labels = [labels l];
+          
+          new_labels = zeros(size(sample,2),7);
+          new_labels(:,l) = 1;
+          
+          labels = [labels;  new_labels];
           
         end
       end
@@ -23,11 +27,11 @@ function net = features(folder,bl,win)
   end
   
   [center,u,o] = fcm(values,10);
+  
   size(u)
+  size(labels)
   
-  
-  
-  net = 0
+  net = newrbe(u(:,1:100),labels(1:100,:)')
   
 
 end
