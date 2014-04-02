@@ -1,13 +1,13 @@
 function [best_net,best_rate,skill_matrix] = train(labels,values)
-  cutoff = 5000;
+  cutoff = size(values,1)
   K = 10;
   shuffle = randperm(size(labels,1));
   shuffle = shuffle(1:cutoff);
   labels = labels(shuffle,:);
   values = values(shuffle,:);
   
-  clusters = [2,4,8,16];
-  spread = [0.01,0.1,1,10];
+  clusters = [5:5:50];
+  spread = [0.0001, 0.001, 0.01,0.1,1,10,100];
   
   skill_matrix = zeros(length(clusters),length(spread));
   best_rate = 0;

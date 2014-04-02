@@ -1,4 +1,4 @@
-function [labels,values,u] = features(folder,bl,win)
+function [labels,values] = features(folder,bl,win)
   label_set = {'a','d','f','h','n','sa','su'};
   labels = [];
   values = [];
@@ -26,6 +26,8 @@ function [labels,values,u] = features(folder,bl,win)
     end
   end
   
-  [center,u,o] = fcm(values,10);
+  mx=repmat(max(values,[],1),size(values,1),1);
+  mn=repmat(min(values,[],1),size(values,1),1);
+  values = (values-mn)./(mx-mn);
 
 end
