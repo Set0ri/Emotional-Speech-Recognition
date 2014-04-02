@@ -1,4 +1,4 @@
-function [values,labels] = features(folder,bl,win)
+function net = features(folder,bl,win)
   label_set = {'a','d','f','h','n','sa','su'};
   labels = [];
   values = [];
@@ -22,9 +22,12 @@ function [values,labels] = features(folder,bl,win)
     end
   end
   
-    size(values)
-    [center,u,o] = fcm(values,10);
-    size(center)
-    size(u)
+  [center,u,o] = fcm(values,10);
+  size(u)
+  
+  
+  
+  net = 0
+  
 
 end
