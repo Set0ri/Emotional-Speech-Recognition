@@ -6,7 +6,7 @@ function [best_net,best_rate,skill_matrix] = train(labels,values)
   labels = labels(shuffle,:);
   values = values(shuffle,:);
   
-  clusters = [5:5:50];
+  clusters = [5:5:60];
   spread = [0.0001, 0.001, 0.01,0.1,1,10,100];
   
   skill_matrix = zeros(length(clusters),length(spread));

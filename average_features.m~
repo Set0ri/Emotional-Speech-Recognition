@@ -15,8 +15,7 @@ function [labels,values] = average_features(folder,bl,win)
           sample = [f(:,1:max_len); p(:,1:max_len); m(:,1:max_len)];
           sample = sample(:,isfinite(sample(1,:)))';
           
-          
-          values = [values; [mean(sample,2) var]];
+          values = [values; [mean(sample) var(sample)]];
           
           new_labels = zeros(1,7);
           new_labels(:,l) = 1;
@@ -31,5 +30,13 @@ function [labels,values] = average_features(folder,bl,win)
   mx=repmat(max(values,[],1),size(values,1),1);
   mn=repmat(min(values,[],1),size(values,1),1);
   values = (values-mn)./(mx-mn);
+
+end
+
+function r = energy(d,window,block,sr)
+  window_length = window*sr;
+  block_length = block*sr;
+  num_
+  
 
 end
