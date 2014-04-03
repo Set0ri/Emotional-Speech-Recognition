@@ -1,5 +1,5 @@
 function [best_net,best_rate,skill_matrix] = train(labels,values)
-  cutoff = size(values,1)
+  cutoff = size(values,1);
   K = 10;
   shuffle = randperm(size(labels,1));
   shuffle = shuffle(1:cutoff);
@@ -15,7 +15,8 @@ function [best_net,best_rate,skill_matrix] = train(labels,values)
  
   for c_num = 1:length(clusters)
       [center,u,o] = fcm(values,clusters(c_num));
-
+      %u = values';
+      
       for spr_num = 1:length(spread)
           indices = crossvalind('Kfold',cutoff,K);
           [m,class] = max(labels,[],2);
